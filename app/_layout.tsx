@@ -1,4 +1,4 @@
-import { View, Text, useColorScheme } from 'react-native'
+import { View, Text, useColorScheme, StatusBar } from 'react-native'
 import React, { useEffect } from 'react'
 import "../global.css"
 import { SplashScreen, Stack } from 'expo-router'
@@ -13,29 +13,16 @@ const RootLayout = () => {
   const colorScheme = useColorScheme();
 
   const backgroundColor = useThemeColor({}, "background")
-/*
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-regular.ttf')
-  })
-
-  useEffect(()=>{
-    if(loaded){
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-*/
 
   return (
     <GestureHandlerRootView style={{flex:1, backgroundColor: backgroundColor}}>
-      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        
-        {/*<ThemedView margin safe={true} bgColor='purple'>  
-          <ThemedText type="normal" className='mt-28' numberOfLines={2} >Lorem ipsum dolor sit amet consectetur
-             adipisicing elit. Minus facilis culpa, doloribus quisquam corrupti
-              nemo doloremque quidem laborum impedit, atque unde a dolor deserunt error 
-              quibusdam quo beatae voluptatibus. Minima!</ThemedText>
-        </ThemedView> */}
-        
+      <StatusBar
+        backgroundColor={backgroundColor}
+        barStyle={colorScheme==="dark" ? "light-content" : "dark-content"}
+        translucent={false}
+      />
+
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>       
       
 
       <Stack screenOptions={{
