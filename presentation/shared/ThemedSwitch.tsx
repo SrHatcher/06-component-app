@@ -26,6 +26,7 @@ const ThemedSwitch = ({className, valor, text, onValueChange}:Props) => {
     <Switch 
         value={valor}
         trackColor={{false: "gray", true: switchActiveColor}}
+        //ios_backgroundColor={valor ? "green", "red"}
         onValueChange={onValueChange}
         thumbColor={isAndroid ? switchActiveColor : ""}
     />  
